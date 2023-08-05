@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bug Tracker V1</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <section class="top-container">
+      <section class="top-app-name">
+        <h1>BUG <c class="color1">TRACKER V1</c></h1>
+      </section>
+
+      <section class="user-info">
+        <p>Welcome Xander</p>
+      </section>
+
+      <section class="user-icon">X</section>
+    </section>
+
+    <section class="container1">
+      <!-- Sidebar -->
+      <aside>
+        <section class="sidebar">
+          <a href="#">
+            <span class="material-icons-sharp"> home </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> confirmation_number </span>
+            <h3>Tickets</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> settings </span>
+            <h3>Settings</h3>
+          </a>
+
+          <a class="logout-sidebar" href="#">
+            <span class="material-icons-sharp"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </section>
+      </aside>
+
+      <main class="main-container">
+        <div class="secondary-container">
+          <h1 class="dashboard-header">Dashboard</h1>
+          <h3 class="mainmenu-header">Main Menu</h3>
+
+          <div class="main-information-container">
+            <div class="bugs-info background-shadow" id="total-bugs-ready">
+              <div class="icon">
+                <span class="material-icons-sharp"> pending </span>
+              </div>
+              <div class="bugs-info-container">
+                <h2 class="bugs-number" id="bugs-ready-number">110</h2>
+                <p>Total <a>Bugs ready</a></p>
+              </div>
+            </div>
+            <div class="bugs-info background-shadow" id="total-bugs-inprogress">
+              <div class="icon">
+                <span class="material-icons-sharp"> timer</span>
+              </div>
+              <div class="bugs-info-container">
+                <h2 class="bugs-number" id="bugs-in-progress-number">514</h2>
+                <p>Total <a>Bugs in progress</a></p>
+              </div>
+            </div>
+            <div class="bugs-info background-shadow" id="total-bugs-completed">
+              <div class="icon">
+                <span class="material-icons-sharp"> check_circle </span>
+              </div>
+              <div class="bugs-info-container">
+                <h2 class="bugs-number" id="bugs-completed-number">253</h2>
+                <p>Total <a>Bugs fixed</a></p>
+              </div>
+            </div>
+            <div id="main-logo-container" class="main-logo background-shadow">
+              <img id="main-image" src="Images/BugTracker logo.png" />
+            </div>
+            <div class="project-list-container background-shadow">
+              <div class="projects-heading-container">
+                <h2>Projects</h2>
+                <!-- <div class="project-search-bar">Search</div> -->
+              </div>
+
+              <div class="dynamic-project-container"></div>
+
+              <input
+                type="text"
+                id="new-project-name"
+                placeholder="Enter Project Name for testing"
+              />
+              <button class="add-project-button" type="button">
+                Add New Project
+              </button>
+
+              <button class="clear-project-button" type="button">Clear</button>
+            </div>
+            <div class="priority-container background-shadow">
+              <h2>Priority</h2>
+              <div class="priority-circle-container">
+                <div class="high-priority-circle">
+                  <h2 class="high-priority-number">510</h2>
+                  <p>High</p>
+                </div>
+                <div class="medium-priority-circle">
+                  <h2 class="medium-priority-number">245</h2>
+                  <p>Medium</p>
+                </div>
+                <div class="low-priority-circle">
+                  <h2 class="low-priority-number">187</h2>
+                  <p>Low</p>
+                </div>
+              </div>
+            </div>
+            <div class="summary-container background-shadow">
+              <h2>Summary</h2>
+            </div>
+            <div class="users-container background-shadow">
+              <h2>Users</h2>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
