@@ -82,6 +82,7 @@
                       id="highPriority"
                       name="priority"
                       value="High"
+                      checked
                     />
                   </div>
                 </div>
@@ -108,13 +109,9 @@
                   </div>
                 </div>
               </div>
-              <button
-                class="add-new-ticket-btn"
-                onclick="increaseTicketCounter(), getNewTicketInfo()"
-              >
+              <button class="add-new-ticket-btn" onclick=" getNewTicketInfo()">
                 Add new
               </button>
-              <button onclick="localStorage.clear()">Clear LocalStorage</button>
             </form>
           </div>
         </div>

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ###########################################################################################################################################################################################################################################################################################################################################################################################################################
+// ##########################################################################################################################################################################################################################################################################################################################################################################################################################
 
 let globalMainCounter = 0;
 let newTicketElementArray = [];
@@ -39,6 +39,7 @@ let confirmTicketElementArray = [];
 let confirmTicketInfoArrayReal = [];
 let closeTicketInfoArray = [];
 let closeTicketElementArray = [];
+let tempUsersArray = [];
 
 let highPriorityCounter = 0;
 let mediumPriorityCounter = 0;
@@ -50,8 +51,6 @@ let countConfirmedTickets = 0;
 let countClosedTickets = 0;
 
 let ticketName, ticketDescription, ticketProject, ticketUser, ticketPriority;
-
-console.log(localStorage.totalTicketCounter);
 
 if (
   localStorage.countNewTickets != null ||
@@ -127,7 +126,6 @@ function increaseTicketCounter() {
     ticketCounter = Number(lStorageTicketCount);
     ticketCounter++;
     localStorage.newTicketCounter = ticketCounter;
-    console.log(ticketCounter);
     return ticketCounter;
   } else localStorage.newTicketCounter = 1;
 }
@@ -138,14 +136,15 @@ function increaseConfirmTicketCounter() {
     confirmTicketCounter = Number(lStorageTicketCount);
     confirmTicketCounter++;
     localStorage.confirmTicketCounter = confirmTicketCounter;
-    console.log(confirmTicketCounter);
     return confirmTicketCounter;
   } else localStorage.confirmTicketCounter = 1;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   const projectArray = localStorage.projectarrays.split(",");
-  const tempUsersArray = JSON.parse(localStorage.usersArray);
+  if (localStorage.usersArray !== undefined) {
+    tempUsersArray = JSON.parse(localStorage.usersArray);
+  }
 
   let usersArray = [];
   for (let i = 0; i < tempUsersArray.length; i++) {
@@ -165,32 +164,42 @@ function getNewTicketInfo() {
     'input[name="priority"]:checked'
   ).value;
 
-  // This creates an object and stores the current information in it so that we can access it for the confirm fucntion
-  let newTicketArray = [
-    (Name = ticketName),
-    (Description = ticketDescription),
-    (Project = ticketProject),
-    (User = ticketUser),
-    (Priority = ticketPriority),
-  ];
-
   if (
-    localStorage.newTicketInfo != null ||
-    localStorage.newTicketInfo != undefined
+    ticketName != "" &&
+    ticketDescription != "" &&
+    ticketProject != "" &&
+    ticketUser != ""
   ) {
-    confirmTicketInfoArray = JSON.parse(localStorage.newTicketInfo);
-  }
-  confirmTicketInfoArray.push(newTicketArray);
-  localStorage.newTicketInfo = JSON.stringify(confirmTicketInfoArray);
+    increaseTicketCounter();
+    // This creates an object and stores the current information in it so that we can access it for the confirm fucntion
+    let newTicketArray = [
+      (Name = ticketName),
+      (Description = ticketDescription),
+      (Project = ticketProject),
+      (User = ticketUser),
+      (Priority = ticketPriority),
+    ];
 
-  // This calls the createTicketElement function to display the newticket
-  createTicketElement(
-    ticketName,
-    ticketDescription,
-    ticketProject,
-    ticketUser,
-    ticketPriority
-  );
+    if (
+      localStorage.newTicketInfo != null ||
+      localStorage.newTicketInfo != undefined
+    ) {
+      confirmTicketInfoArray = JSON.parse(localStorage.newTicketInfo);
+    }
+    confirmTicketInfoArray.push(newTicketArray);
+    localStorage.newTicketInfo = JSON.stringify(confirmTicketInfoArray);
+
+    // This calls the createTicketElement function to display the newticket
+    createTicketElement(
+      ticketName,
+      ticketDescription,
+      ticketProject,
+      ticketUser,
+      ticketPriority
+    );
+  } else {
+    alert("Please make sure that all fields are entered");
+  }
 }
 
 // This will add the projects from the project array to the dropdown box
@@ -409,9 +418,7 @@ const moveToConfirmed = function (ticketNum) {
 
   // This stores the newTicketElement array in a temporary array for the selected element to be removed
   let deletearr = localStorage.newTicketElements.split(",");
-  console.log("#####################################################");
   deletearr.splice(ticketNum - 1, 1, "");
-  console.log(deletearr);
   localStorage.newTicketElements = deletearr.join(",");
 
   // This removes the selected element(as indicated by the confirm button's ID) from the new-ticket-flexbox
@@ -495,7 +502,6 @@ const moveToClosed = function (ticketNum) {
 
   // Stores the edited array in the local storage
   localStorage.closeTicketElementArray = closeTicketElementArray.join(",");
-  console.log(localStorage.closeTicketElementArray);
 
   if (arrDisplay[ticketNum - 1] != "") {
     // This stores the newTicketElement array in a temporary array for the selected element to be removed

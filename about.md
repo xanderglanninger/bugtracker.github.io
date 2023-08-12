@@ -41,3 +41,7 @@ When the admin(user) selects the confirm button. The same logic as the close but
 ## Reminders
 
 We kept the CSS and JavaScript files separate for the three html documents to make sure that there are no duplicate class names and ids used within the three html documents.
+
+## Link to GitHub
+
+link: https://github.com/xanderglanninger/bugtracker.github.io
