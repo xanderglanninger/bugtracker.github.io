@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* This is constant variables that can be used throughout the project*/
+:root {
+  --maincolour1: rgb(162, 26, 204);
+  --color-white: rgb(255, 255, 255);
+  --box-shadow: rgb(158, 97, 158);
+  --main-background-colour: rgb(228, 213, 228);
+  --search-grey: rgb(150, 149, 149);
+  --color-red: rgb(255, 125, 125);
+  --color-yellow: rgb(255, 255, 125);
+  --color-green: rgb(121, 255, 125);
+  /* Add variables */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: 0;
+  border: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  display: 0;
+}
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 100%;
+  height: 90vh;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.88rem;
+  user-select: none;
+  overflow-x: hidden;
+  margin: 1%;
+  overflow-y: auto;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Top header */
+
+.top-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-app-name h1 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.top-app-name h1 .color1 {
+  color: var(--maincolour1);
+}
+
+.user-icon {
+  border-radius: 50%;
+  background-color: var(--maincolour1);
+  width: 25px;
+  height: 25px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2%;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Sidebar */
+
+.main-body-container {
+  display: flex;
+  height: 90%;
+}
+
+.material-icons-sharp {
+  color: black;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 0.87rem;
+}
+
+small {
+  font-size: 0.76rem;
+}
+
+aside {
+  height: 80vh;
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 15px;
+  height: 88vh;
+  position: relative;
+  top: 1.5rem;
+  transition: all 0.3s ease;
+  width: 200px;
+}
+
+aside .sidebar:hover {
+  box-shadow: none;
+}
+
+aside .sidebar a {
+  display: flex;
+  align-items: center;
+  color: var(--color-info-dark);
+  height: 3.7rem;
+  gap: 1rem;
+  position: relative;
+  margin-left: 2rem;
+  transition: all 0.3s ease;
+  width: min-content;
+}
+
+aside .sidebar a span {
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+
+aside .sidebar a:last-child {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+aside .sidebar a.active {
+  width: 100%;
+  color: var(--color-primary);
+  background-color: var(--color-light);
+  margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+  content: "";
+  width: 6px;
+  height: 18px;
+  background-color: var(--color-primary);
+}
+
+aside .sidebar a.active span {
+  color: var(--color-primary);
+  margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover span {
+  margin-left: 0.6rem;
+}
+
+aside .sidebar .message-count {
+  background-color: var(--color-danger);
+  padding: 2px 6px;
+  color: var(--color-white);
+  font-size: 11px;
+  border-radius: var(--border-radius-1);
+}
+
+/* ################################################################################### */
+
+/* ticket */
+
+/* Add new Ticket form */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.popup-content {
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.create-ticket-btn {
+  margin: 100px;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.add-new-ticket-container {
+  display: flex;
+  justify-content: center;
+}
+
+.addNewTicketbtn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  width: 100%;
+}
+
+.visible {
+  visibility: hidden;
+  display: none;
+  height: 0%;
+}
+
+.addNewTicket {
+  background-color: rgb(245, 228, 255);
+  padding: 20px;
+  height: 500px;
+  width: 500px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addNewTicket-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addNewTicket-txtName {
+  width: 380px;
+  height: 30px;
+  border-radius: 10px;
+  border: solid 1px white;
+}
+
+.addNewTicket-txtDescription {
+  width: 490px;
+  height: 150px;
+  border-radius: 10px;
+  border: solid 1px white;
+  padding: 0px;
+}
+
+.addNewTicket-txtDescription textarea {
+  resize: vertical;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.assign-main-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addNewTicket-project,
+.addNewTicket-user {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+}
+
+#project,
+#user {
+  height: 40px;
+  border-radius: 20px;
+  border: solid 1px white;
+}
+
+.background-container {
+  position: relative;
+  filter: blur(5px);
+  z-index: 0;
+}
+
+.addNewTicket-priority {
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.priority-container {
+  height: 40px;
+  width: 150px;
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-new-ticket-btn {
+  border-radius: 30px;
+  background-color: rgb(108, 36, 175);
+  padding: 10px;
+  color: white;
+}
+
+.red {
+  background-color: rgb(255, 127, 127);
+  display: flex;
+}
+
+.yellow {
+  background-color: rgb(253, 255, 143);
+  display: flex;
+}
+
+.green {
+  background-color: rgb(176, 255, 144);
+  display: flex;
+}
+
+.add-new-ticket-container p {
+  margin-bottom: 2px;
+}
+
+.priority-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newTicket-flex,
+.confirmedTicket-flex,
+.closedTicket-flex {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+/* ########################################################################### */
+
+.addNewTicketbtn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addNewTicketbtn {
+  margin-right: 2%;
+  margin-bottom: 10px;
+  width: 250px;
+  height: 40px;
+  background-color: var(--maincolour1);
+  color: white;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+.addTicket-body-cointainer {
+  background-color: var(--main-background-colour);
+  border-radius: 20px;
+  width: 85%;
+  height: 90vh;
+}
+
+.ticket-header-title {
+  margin-top: 2%;
+  margin-left: 25px;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+.ticket-header-title h2 {
+  font-weight: 500;
+  font-size: 40px;
+}
+
+.ticket-header-title p {
+  font-weight: 100;
+  font-size: 15px;
+  color: var(--search-grey);
+  margin-bottom: 2%;
+}
+
+.ticket-body {
+  display: flex;
+  justify-content: space-evenly;
+  height: 800px;
+  padding-top: 1%;
+}
+
+.ticket-body :hover {
+  box-shadow: none;
+}
+
+.ticket-heading h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.ticket-items {
+  overflow-y: auto;
+  width: 30%;
+  border-radius: 20px;
+  background-color: var(--color-white);
+  height: 72vh;
+  box-shadow: 5px 5px 10px rgb(144, 140, 146);
+  transition: all 0.3s ease;
+}
+
+/* .ticket-items::-webkit-scrollbar {
+  display: none;
+} */
+
+.newTicket-element {
+  background-color: var(--color-red);
+  border-radius: 20px;
+  margin: 5px;
+  max-height: 350px;
+}
+
+.confirm-element {
+  background-color: var(--color-green);
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.closed-element {
+  background-color: var(--maincolour1);
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.Ticket-name-description {
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  border-radius: 10px;
+}
+
+.Ticket-name {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  max-height: 30px;
+  width: 97.5%;
+  margin: 5px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.Ticket-name-heading {
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.Ticket-description {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  max-height: 80px;
+  overflow-y: scroll;
+  width: 97.5%;
+  margin: 5px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.Ticket-description::-webkit-scrollbar {
+  display: none;
+}
+
+.Ticket-description-paragraph {
+  inline-size: 80%;
+  overflow-wrap: break-word;
+  text-align: center;
+  margin: 0px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.Ticket-info {
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+  border-radius: 10px;
+}
+
+.Ticket-info-project,
+.Ticket-info-user,
+.Ticket-info-priority {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  margin: 5px;
+  background-color: white;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.Ticket-info-project-display {
+  height: 20px;
+  margin: 0px;
+  font-size: 1.5vh;
+}
+
+.project-user-container {
+  display: flex;
+}
+
+.Ticket-info-user-display {
+  max-height: 20px;
+  margin: 0px;
+  font-size: 1.5vh;
+}
+
+.Ticket-info-priority-display {
+  max-height: 20px;
+  margin: 0px;
+  font-size: 1.5vh;
+}
+
+.Ticket-action {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.Ticket-action-close {
+  background-color: rgb(246, 72, 72);
+}
+
+.Ticket-action-confirm {
+  background-color: var(--color-green);
+}
+
+.Ticket-action-close,
+.Ticket-action-confirm {
+  border-radius: 20px;
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+  margin: 2%;
+}
+/* ticket */
+.background-shadow {
+  box-shadow: 2px 2px 5px rgb(36, 36, 36);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.background-shadow :hover {
+  box-shadow: none;
+}

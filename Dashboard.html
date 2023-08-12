@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bug Tracker V1</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboardStyles.css" />
+    <script src="dashboard.js"></script>
+  </head>
+  <body>
+    <section class="top-container">
+      <section class="top-app-name">
+        <h1>BUG <c class="color1">TRACKER V1</c></h1>
+      </section>
+
+      <section class="user-info">
+        <p>Welcome Admin</p>
+      </section>
+
+      <section class="user-icon">X</section>
+    </section>
+
+    <section class="container1">
+      <!-- Sidebar -->
+      <aside>
+        <section class="sidebar">
+          <a href="#">
+            <span class="material-icons-sharp"> home </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="tickets.html">
+            <span class="material-icons-sharp"> confirmation_number </span>
+            <h3>Tickets</h3>
+          </a>
+          <a href="#">
+            <span class="material-icons-sharp"> settings </span>
+            <h3>Settings</h3>
+          </a>
+
+          <a class="logout-sidebar" href="index.html">
+            <span class="material-icons-sharp"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </section>
+      </aside>
+
+      <!-- Add user Form -->
+      <div id="popupContainer" class="popup">
+        <div class="popup-content">
+          <div class="input-wrapper hidden">
+            <section id="user-form-container">
+              <input type="text" id="name" placeholder="Enter name" required />
+
+              <input
+                type="text"
+                id="surname"
+                placeholder="Enter surname"
+                required
+              />
+
+              <input
+                type="number"
+                id="idnumber"
+                placeholder="Enter your id number"
+                required
+              />
+
+              <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                required
+              />
+
+              <input
+                type="email"
+                id="mail"
+                placeholder="Enter your email"
+                required
+              />
+              <button type="button" class="btn btn-add" onclick="addPerson()">
+                Add User
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <main class="main-container">
+        <div class="secondary-container">
+          <h1 class="dashboard-header">Dashboard</h1>
+          <h3 class="mainmenu-header">Main Menu</h3>
+
+          <div class="main-information-container">
+            <div class="bugs-info background-shadow" id="total-bugs-ready">
+              <div class="icon">
+                <span class="material-icons-sharp"> pending </span>
+              </div>
+              <div class="bugs-info-container">
+                <h2 class="bugs-number" id="bugs-ready-number">110</h2>
+                <p>Total <a>New Tickets</a></p>
+              </div>
+            </div>
+            <div class="bugs-info background-shadow" id="total-bugs-inprogress">
+              <div class="icon">
+                <span class="material-icons-sharp"> timer</span>
+              </div>
+              <div class="bugs-info-container">
+                <h2 class="bugs-number" id="bugs-in-progress-number">514</h2>
+                <p>Total <a>Confrimed Tickets</a></p>
+              </div>
+            </div>
+            <div class="bugs-info background-shadow" id="total-bugs-completed">
+              <div class="icon">
+                <span class="material-icons-sharp"> check_circle </span>
+              </div>
+              <div class="bugs-info-container">
+                <h2 class="bugs-number" id="bugs-completed-number">253</h2>
+                <p>Total <a>Closed Tickets</a></p>
+              </div>
+            </div>
+            <div id="main-logo-container" class="main-logo background-shadow">
+              <img id="main-image" src="Images/BugTracker logo.png" />
+            </div>
+            <div class="project-list-container background-shadow">
+              <div class="projects-heading-container">
+                <h2>Projects</h2>
+                <!-- <div class="project-search-bar">Search</div> -->
+              </div>
+
+              <div class="dynamic-project-container"></div>
+
+              <input
+                type="text"
+                class="new-project-name background-shadow"
+                placeholder="Enter new project name"
+              />
+              <button class="add-project-button" type="button">
+                Add New Project
+              </button>
+            </div>
+            <div class="priority-container background-shadow">
+              <h2>Priority</h2>
+              <div class="priority-circle-container">
+                <div class="high-priority-circle">
+                  <h2 class="high-priority-number">510</h2>
+                  <p>High</p>
+                </div>
+                <div class="medium-priority-circle">
+                  <h2 class="medium-priority-number">245</h2>
+                  <p>Medium</p>
+                </div>
+                <div class="low-priority-circle">
+                  <h2 class="low-priority-number">187</h2>
+                  <p>Low</p>
+                </div>
+              </div>
+            </div>
+            <div class="summary-container background-shadow">
+              <h2>Summary</h2>
+              <div class="summary-secondary-container">
+                <div class="summary-third-container">
+                  <div class="total-bugs-summary">0</div>
+                  <div class="total-bugs-text">
+                    <h2>Total <a class="bugs-text-colour">Bugs</a></h2>
+                  </div>
+                </div>
+                <div class="summary-third-container">
+                  <div class="total-users-summary">0</div>
+                  <div class="total-users-text">
+                    <h2>Total <a class="users-text-colour">Users</a></h2>
+                  </div>
+                </div>
+                <div class="summary-third-container">
+                  <div class="total-projects-summary">0</div>
+                  <div class="total-projects-text">
+                    <h2>Total <a class="projects-text-colour">Projects</a></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="users-container background-shadow">
+              <div class="users-header">
+                <h2 class="users-title">Users</h2>
+                <div class="InputContainer">
+                  <input
+                    type="text"
+                    id="search"
+                    class="input"
+                    placeholder="Search for a User"
+                    oninput="searchUser()"
+                  />
+                </div>
+                <button type="submit" class="popupUsers btn-add-user">
+                  Add Users
+                </button>
+              </div>
+              <ul id="userList"></ul>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
