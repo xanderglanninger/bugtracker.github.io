@@ -45,3 +45,7 @@ We kept the CSS and JavaScript files separate for the three html documents to ma
 ## Link to GitHub
 
 link: https://github.com/xanderglanninger/bugtracker.github.io
+
+## Link to app
+
+link: https://xanderglanninger.github.io/bugtracker.github.io/
